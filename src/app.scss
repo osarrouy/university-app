@@ -1,0 +1,185 @@
+@import './variables.scss';
+
+@font-face {
+  font-family: 'Supply Mono';
+  src: url(/fonts/PPSupplyMono-Ultralight.otf) format('opentype');
+  font-weight: 400;
+  font-display: swap;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Supply Mono';
+  src: url(/fonts/PPSupplyMono-Regular.otf) format('opentype');
+  font-weight: 600;
+  font-display: swap;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Spectral';
+  src: url(/fonts/Spectral-ExtraLight.ttf) format('truetype');
+  font-weight: 200;
+  font-display: swap;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Spectral';
+  src: url(/fonts/Spectral-ExtraLightItalic.ttf) format('truetype');
+  font-weight: 200;
+  font-display: swap;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Spectral';
+  src: url(/fonts/Spectral-Regular.ttf) format('truetype');
+  font-weight: 400;
+  font-display: swap;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Spectral';
+  src: url(/fonts/Spectral-Italic.ttf) format('truetype');
+  font-weight: 400;
+  font-display: swap;
+  font-style: italic;
+}
+
+
+html {
+  font-size: 20px;
+}
+
+body {
+  background-color: $light;
+	color: $dark;
+  font-family: 'Supply Mono', monospace;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  line-height: 1;
+
+  --cross-color: #e5e5e5;
+}
+
+p {
+  line-height: 1.2;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Spectral', serif;
+  font-weight: 400;
+  margin: $space-sm 0;
+}
+
+h1 {
+  font-size: 4rem;
+}
+a {
+  cursor: pointer;
+  &:hover {
+    color: $accent;
+    text-decoration: line-through;
+  }
+}
+
+.light {
+  background-color: $light;
+}
+
+.dark {
+  background-color: $dark;
+
+  p,
+  a,
+  h1,
+  h2 {
+    color: $light;
+
+    &::selection {
+      background-color: $light;
+      color: $dark;
+    }
+  }
+
+  a:hover {
+    color: $accent;
+  }
+
+}
+
+.cross {
+  position: absolute;
+  height: $space-sm;
+  width: $space-sm;
+  z-index: 9999;
+
+  &::before,
+  &::after {
+    content: ' ';
+    position: absolute;
+    left: calc($space-sm / 2);
+    height: $space-sm;
+    width: 1px;
+    background-color: var(--cross-color);
+    transition: background-color 2.5s ease-in-out;
+  }
+
+  &::after {
+    transform: rotate(-90deg);
+  }
+
+  &:nth-of-type(1) {
+    top: calc($space-md - $space-sm / 2);
+    left: calc($space-md - $space-sm / 2);
+  }
+
+  &:nth-of-type(2) {
+    top: calc($space-md - $space-sm / 2);
+    right: calc($space-md - $space-sm / 2);
+  }
+
+  &:nth-of-type(3) {
+    right: calc($space-md - $space-sm / 2);
+    bottom: calc($space-md - $space-sm / 2);
+  }
+
+  &:nth-of-type(4) {
+    left: calc($space-md - $space-sm / 2);
+    bottom: calc($space-md - $space-sm / 2);
+  }
+}
+
+// framework
+
+.flex {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  &.column {
+		flex-direction: column;
+  }
+
+  &.row {
+		flex-direction: row;
+  }
+}
+
+.contained {
+  min-height: calc(100vh - 4 * $space-md);
+  margin: $space-md;
+	padding: $space-md;
+
+  &.strict {
+		height: calc(100vh - 4 * $space-md);
+  }
+}
+
+.serif {
+  font-family: 'Spectral', serif;
+  font-weight: 200;
+}
+
