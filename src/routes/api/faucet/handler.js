@@ -1,6 +1,11 @@
+/** @type {import('@sveltejs/adapter-vercel').Config} */
+export const config = {
+  runtime: 'nodejs18.x'
+};
+
 import { ethers } from 'ethers';
  
- export default async function handler(request, response) {
+export default async function handler(request, response) {
 
 	// console.log(event.queryStringParameters);
 	// console.log(event.body);
