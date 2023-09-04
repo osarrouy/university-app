@@ -14,8 +14,12 @@
 	import { Button } from '$lib/components';
 	import { shorten } from '$lib';
 
-	const PUBLIC_WALLETCONNECT_ID = '1286a6606e040f0620d01ee2465cb56a';
+	import { getNotificationsContext } from 'svelte-notifications';
 
+	const { addNotification } = getNotificationsContext();
+
+	const PUBLIC_WALLETCONNECT_ID = '1286a6606e040f0620d01ee2465cb56a';
+	let disabled = false;
 	onMount(async () => {
 		const erckit = defaultConfig({
 			appName: 'erc.kit',
@@ -34,6 +38,19 @@
 	const connect = () => {
 		$web3Modal.openModal();
 	};
+
+	const faucet = async () => {
+		try {
+			fetch('https://university-dapp.vercel.app/api/faucet?address=' + $signerAddress);
+			disabled = true;
+			addNotification({
+				text: 'ETH on its way ... Check your wallet in 30s',
+				position: 'bottom-center'
+			});
+		} catch (error) {
+			console.log(error);
+		}
+	};
 </script>
 
 <header>
@@ -49,7 +66,7 @@
 </header>
 <main>
 	{#if $connected}
-		<Button on:click={() => connect()}>claim ETH</Button>
+		<Button on:click={faucet} {disabled}>claim ETH</Button>
 		<p>or</p>
 		<Button on:click={() => connect()}>go to votes</Button>
 	{:else}

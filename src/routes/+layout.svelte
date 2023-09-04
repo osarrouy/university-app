@@ -1,6 +1,7 @@
 <script>
-	import { browser } from '$app/environment';
 	import { onMount } from 'svelte';
+	import { browser } from '$app/environment';
+	import Notifications from 'svelte-notifications';
 	import '../app.scss';
 
 	onMount(async () => {
@@ -11,4 +12,6 @@
 	});
 </script>
 
-<slot />
+<Notifications>
+	<slot />
+</Notifications>
