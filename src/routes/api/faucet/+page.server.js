@@ -5,7 +5,7 @@ export const config = {
 
 import { ethers } from 'ethers';
  
-export default async function handler(request, response) {
+export const load = async (request, response) {
 
 	// console.log(event.queryStringParameters);
 	// console.log(event.body);
