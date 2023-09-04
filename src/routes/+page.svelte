@@ -35,6 +35,12 @@
 		$web3Modal.openModal();
 	};
 
+	connected.subscribe(async (connected) => {
+		if (!connected) {
+			fueled = false;
+		}
+	});
+
 	signerAddress.subscribe(async (address) => {
 		if (address) {
 			balance = await fetchBalance({ address });
