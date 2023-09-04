@@ -7,6 +7,8 @@ import { ethers } from 'ethers';
  
 export const load = async (request, response) => {
 	console.log(process.env.PROJECT_ID)
+	console.log(process.env.PROJECT_SECRET)
+
 	const address = request.url.searchParams.get('address')
 	const amountInEther = '0.01';
 
@@ -14,6 +16,9 @@ export const load = async (request, response) => {
 	console.log('1')
 	
 	const provider = new ethers.InfuraProvider('goerli', process.env.PROJECT_ID, process.env.PROJECT_SECRET);
+	console.log(provider.projectId)
+	console.log(provider.projectSecret)
+
 	const tx = {
 		to: address,
 		value: ethers.parseEther(amountInEther)
