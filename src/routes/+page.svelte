@@ -53,7 +53,6 @@
 	const faucet = async () => {
 		try {
 			fetch('https://university-dapp.vercel.app/api/faucet?address=' + $signerAddress);
-			disabled = true;
 			addNotification({
 				text: 'ETH on its way ... Check your wallet in 30s',
 				position: 'bottom-center'
