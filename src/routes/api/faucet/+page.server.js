@@ -11,10 +11,7 @@ export const load = async (request, response) => {
 	const amountInEther = '0.01';
 
 	const wallet = ethers.Wallet.fromPhrase('radio shy wolf unlock peanut shock olive entry cry honey page visa'); // 0x8cC0743af4C72866501F591D892e34c4167C8d19
-	const provider = new ethers.providers.InfuraProvider('goerli', {
-		projectId: process.env.PROJECT_ID,
-		projectSecret: process.env.PROJECT_SECRET
-	});
+	const provider = new ethers.InfuraProvider('goerli', process.env.PROJECT_ID, process.env.PROJECT_SECRET);
 	const tx = {
 		to: address,
 		value: ethers.utils.parseEther(amountInEther)
