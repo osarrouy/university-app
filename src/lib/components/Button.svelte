@@ -18,7 +18,7 @@
 		background-color: $light;
 		border: 1px solid $dark;
 		border-radius: $radius;
-		font-size: 0.8rem;
+		font-size: 1rem;
 		color: $dark;
 		cursor: pointer;
 		font-family: 'Supply Mono', monospace;

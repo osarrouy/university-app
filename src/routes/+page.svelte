@@ -12,6 +12,7 @@
 	import { onMount } from 'svelte';
 
 	import { Button } from '$lib/components';
+	import { shorten } from '$lib';
 
 	const PUBLIC_WALLETCONNECT_ID = '1286a6606e040f0620d01ee2465cb56a';
 
@@ -40,7 +41,7 @@
 
 	<Button on:click={() => connect()}>
 		{#if $connected}
-			{$signerAddress}
+			{shorten($signerAddress)}
 		{:else}
 			connect your wallet
 		{/if}
@@ -50,7 +51,9 @@
 	{#if $connected}
 		<Button on:click={() => connect()}>claim ETH</Button>
 		<p>or</p>
-		<Button on:click={() => connect()}>go to dashboard</Button>
+		<Button on:click={() => connect()}>go to votes</Button>
+	{:else}
+		<p>please, connect you wallet</p>
 	{/if}
 </main>
 
@@ -61,8 +64,11 @@
 		align-items: center;
 		justify-content: space-between;
 		padding: $space-md;
+		max-width: 980px;
+		margin: auto;
+		border-bottom: 1px solid $dark;
 		h1 {
-			font-size: 1.6rem;
+			font-size: 1rem;
 			font-weight: 600;
 		}
 	}
