@@ -79,7 +79,7 @@
 <main>
 	{#if $connected}
 		{#if !fueled}
-			<Button on:click={faucet} disabled>claim ETH</Button>
+			<Button on:click={faucet}>claim ETH</Button>
 			<p>or</p>
 		{/if}
 		<Button on:click={() => connect()}>go to votes</Button>
