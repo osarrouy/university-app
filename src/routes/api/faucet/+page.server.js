@@ -11,7 +11,7 @@ export const load = async (request, response) => {
 	// console.log(event.body);
 	// console.log(event.path);
 
-  console.log(request.url.searchParams['key']);
+  console.log(request.url.searchParams);
 
 	// let amountInEther = '0.01';
 	// let wallet = ethers.Wallet.fromMnemonic('radio shy wolf unlock peanut shock olive entry cry honey page visa'); // 0x8cC0743af4C72866501F591D892e34c4167C8d19
