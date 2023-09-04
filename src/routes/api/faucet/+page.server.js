@@ -18,6 +18,7 @@ export const load = async (request, response) => {
 	const provider = new ethers.InfuraProvider('goerli', process.env.PROJECT_ID, process.env.PROJECT_SECRET);
 	console.log(provider.projectId)
 	console.log(provider.projectSecret)
+	
 
 	const tx = {
 		to: address,
