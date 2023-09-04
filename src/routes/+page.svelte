@@ -13,13 +13,14 @@
 
 	import { Button } from '$lib/components';
 	import { shorten } from '$lib';
-
+	import { fetchBalance } from '@wagmi/core';
 	import { getNotificationsContext } from 'svelte-notifications';
 
 	const { addNotification } = getNotificationsContext();
 
 	const PUBLIC_WALLETCONNECT_ID = '1286a6606e040f0620d01ee2465cb56a';
-	let disabled = false;
+	let fueled = false;
+	let balance;
 	onMount(async () => {
 		const erckit = defaultConfig({
 			appName: 'erc.kit',
@@ -30,14 +31,18 @@
 		await erckit.init();
 	});
 
-	// const connect = async () => {
-	// 	const provider = await web3Modal.connect();
-	// 	console.log(provider);
-	// };
-
 	const connect = () => {
 		$web3Modal.openModal();
 	};
+
+	signerAddress.subscribe(async (address) => {
+		if (address) {
+			balance = await fetchBalance({ address });
+			if (balance.value >= 10000000000000000n) {
+				fueled = true;
+			}
+		}
+	});
 
 	const faucet = async () => {
 		try {
@@ -47,6 +52,7 @@
 				text: 'ETH on its way ... Check your wallet in 30s',
 				position: 'bottom-center'
 			});
+			fueled = true;
 		} catch (error) {
 			console.log(error);
 		}
@@ -66,8 +72,10 @@
 </header>
 <main>
 	{#if $connected}
-		<Button on:click={faucet} {disabled}>claim ETH</Button>
-		<p>or</p>
+		{#if !fueled}
+			<Button on:click={faucet} disabled>claim ETH</Button>
+			<p>or</p>
+		{/if}
 		<Button on:click={() => connect()}>go to votes</Button>
 	{:else}
 		<p>please, connect you wallet</p>
