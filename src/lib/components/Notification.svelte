@@ -22,7 +22,7 @@
 		align-items: center;
 		justify-content: space-between;
 		font-size: 0.8rem;
-		margin: $space-md $space-md 0 0;
+		margin-bottom: $space-md;
 		padding: $space-md;
 
 		.close {

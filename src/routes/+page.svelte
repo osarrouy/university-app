@@ -23,7 +23,7 @@
 			fetch('https://university-dapp.vercel.app/api/faucet?address=' + $signerAddress);
 			addNotification({
 				text: 'ETH on its way ...',
-				position: 'top-right'
+				position: 'bottom-center'
 				// type: 'error',
 			});
 			fueled = true;
