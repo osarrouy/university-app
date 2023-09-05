@@ -20,5 +20,11 @@ export const load = async (request, response) => {
 
 	console.log(AMOUNT_ETH + ' ETH => ' + address);
 
-	return response.status(200).json({ title: 'OK', headers: { 'access-control-allow-origin': '*'} });
+	return {
+		statusCode: 200,
+		body: JSON.stringify({ status: 'OK' }),
+		headers: {
+			'access-control-allow-origin': '*'
+		}
+	};
 }
