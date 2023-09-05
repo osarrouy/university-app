@@ -4,4 +4,6 @@ const shorten = (address) => {
   return first + '...' + last;
 }
 
-export { shorten };
+const PUBLIC_WALLETCONNECT_ID = '1286a6606e040f0620d01ee2465cb56a';
+
+export { shorten, PUBLIC_WALLETCONNECT_ID };

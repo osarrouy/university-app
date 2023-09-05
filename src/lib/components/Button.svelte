@@ -1,5 +1,6 @@
 <script>
 	import { createEventDispatcher } from 'svelte';
+
 	const dispatch = createEventDispatcher();
 
 	const click = (ev) => {
@@ -15,39 +16,29 @@
 		flex-direction: row;
 		align-items: center;
 		justify-content: center;
-		background-color: $light;
-		border: 1px solid $dark;
-		border-radius: $radius;
-		font-size: 1rem;
-		color: $dark;
-		cursor: pointer;
-		font-family: 'Supply Mono', monospace;
-		padding: $space-sm;
-		transition: all 0.3s;
-		user-select: none;
-		-webkit-user-select: none;
-		touch-action: manipulation;
 
-		&:focus {
-			color: #171e29;
-		}
+		background-color: $light;
+		color: $accent;
+		border: 1px solid $accent;
+		border-radius: $radius;
+		cursor: pointer;
+
+		font-family: 'Supply Mono', monospace;
+		font-size: 0.85rem;
+
+		padding: $space-sm;
+		transition: all 0.4s;
+		user-select: none;
+		touch-action: manipulation;
+		-webkit-user-select: none;
 
 		&:hover {
-			border-color: $accent;
-			color: $accent;
-			fill: $accent;
+			background-color: $accent;
+			color: $light;
 		}
 
 		&:active {
-			border-color: $accent;
-			color: $accent;
-			fill: $accent;
-		}
-	}
-
-	@media (min-width: 768px) {
-		button {
-			min-width: 170px;
+			transform: scale(0.95);
 		}
 	}
 </style>
