@@ -58,8 +58,14 @@
 	const propose = async () => {
 		console.log('» Creating proposal « ' + proposal + ' » ...');
 		try {
+			addNotification({
+				text: 'Validate tx in your wallet ...',
+				position: 'bottom-center',
+				type: 'error'
+			});
 			const hash = await contract.write.propose([proposal]);
 			console.log(hash);
+			clearNotifications();
 			addNotification({
 				text: 'Creating proposal through tx ' + shorten(hash) + '...',
 				position: 'bottom-center'
@@ -73,6 +79,7 @@
 			});
 			setTimeout(fetchProposals, 20000);
 		} catch (e) {
+			clearNotifications();
 			addNotification({
 				text: 'There has been an error ...',
 				position: 'bottom-center',
@@ -87,8 +94,14 @@
 		console.log('» Voting ' + yes + ' on proposal ' + id + ' ...');
 		try {
 			proposals[id].hasVoted = true;
+			addNotification({
+				text: 'Validate tx in your wallet ...',
+				position: 'bottom-center',
+				type: 'error'
+			});
 			const hash = await contract.write.vote([id, yes]);
 			console.log(hash);
+			clearNotifications();
 			addNotification({
 				text: 'Voting through tx ' + shorten(hash),
 				position: 'bottom-center'
@@ -103,6 +116,7 @@
 			setTimeout(fetchProposals, 20000);
 		} catch (e) {
 			proposals[id].hasVoted = false;
+			clearNotifications();
 			addNotification({
 				text: 'There has been an error ...',
 				position: 'bottom-center',
