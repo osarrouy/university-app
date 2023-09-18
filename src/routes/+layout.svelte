@@ -4,7 +4,7 @@
 	import { Header, Notification, Spinner } from '$lib/components';
 	import { onMount } from 'svelte';
 	import { browser } from '$app/environment';
-	import { mainnet, goerli } from '@wagmi/chains';
+	import { mainnet, sepolia } from '@wagmi/chains';
 	import { loading, wagmiLoaded, defaultConfig } from 'svelte-wagmi';
 	import Notifications from 'svelte-notifications';
 
@@ -17,7 +17,7 @@
 			// initialize app
 			const app = defaultConfig({
 				appName: 'Rennes2 Dapp',
-				chains: [mainnet, goerli],
+				chains: [mainnet, sepolia],
 				walletConnectProjectId: PUBLIC_WALLETCONNECT_ID
 			});
 			await app.init();

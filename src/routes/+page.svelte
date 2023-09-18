@@ -40,7 +40,7 @@
 		{/if}
 		<p>> ~ head to the <a href="/governance">governance page</a></p>
 	{:else}
-		<p>> ~ please, connect you wallet</p>
+		<p>> ~ please, connect your wallet</p>
 	{/if}
 </main>
 
