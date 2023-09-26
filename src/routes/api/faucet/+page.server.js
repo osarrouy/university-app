@@ -10,7 +10,7 @@ const AMOUNT_ETH = '0.01';
  
 export const load = async (request, response) => {
 	const address = request.url.searchParams.get('address')
-	const provider = new ethers.InfuraProvider('goerli', process.env.PROJECT_ID, process.env.PROJECT_SECRET);
+	const provider = new ethers.InfuraProvider('sepolia', process.env.PROJECT_ID, process.env.PROJECT_SECRET);
 	const wallet = ethers.Wallet.fromPhrase(process.env.MNEMONIC).connect(provider); // 0x6affb932e75147b64ccf3e0bdc1e5756f4fe968e
 
 	await wallet.sendTransaction({
