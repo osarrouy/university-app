@@ -14,7 +14,7 @@
 	signerAddress.subscribe(async (address) => {
 		if (address) {
 			const balance = await fetchBalance({ address });
-			if (balance.value >= 10000000000000000n) fueled = true;
+			if (balance.value >= 50000000000000000n) fueled = true;
 		}
 	});
 

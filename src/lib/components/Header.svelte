@@ -30,6 +30,7 @@
 
 		h1 {
 			font-size: 1rem;
+			font-weight: bolder;
 			position: relative;
 
 			&:after {
